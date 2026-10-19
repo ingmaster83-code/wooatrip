@@ -90,8 +90,11 @@ def crumb_country(c, extra=None):
 
 def country_links(c):
     n = slug(c)
-    return chips([(c["name"] + " 개요", "/country/%s/" % n), (c["name"] + " 비자", "/visa/%s/" % n), (c["name"] + " 시차", "/time/%s/" % n),
-                  (c["name"] + " 전압·플러그", "/plug/%s/" % n), (c["name"] + " 여행경보", "/safety/%s/" % n)])
+    items = [(c["name"] + " 개요", "/country/%s/" % n), (c["name"] + " 비자", "/visa/%s/" % n)]
+    if c["off_w"] is not None: items.append((c["name"] + " 시차", "/time/%s/" % n))
+    if c["plug"]: items.append((c["name"] + " 전압·플러그", "/plug/%s/" % n))
+    items.append((c["name"] + " 여행경보", "/safety/%s/" % n))
+    return chips(items)
 
 # ───────────────────────── 국가 개요 ─────────────────────────
 def page_country(c, byname):
