@@ -94,6 +94,7 @@ def country_links(c):
     if c["off_w"] is not None: items.append((c["name"] + " 시차", "/time/%s/" % n))
     if c["plug"]: items.append((c["name"] + " 전압·플러그", "/plug/%s/" % n))
     items.append((c["name"] + " 여행경보", "/safety/%s/" % n))
+    items += [("🌡️ 섭씨↔화씨 온도 변환", "https://wooaunit.wooahouse.com/temperature/"), ("📏 마일↔km 거리 변환", "https://wooaunit.wooahouse.com/distance/")]
     return chips(items)
 
 # ───────────────────────── 국가 개요 ─────────────────────────
